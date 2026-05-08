@@ -18,7 +18,7 @@ main-image: /pcb-lock.JPG
 ## Wedgelocks and PCB Mounting
 Wedgelocks are used to fasten PCBs in slotted mechanical enclosures. They are mounted on both sides of a PCB and the assembly is slotted into place. The Wedgelock is then engaged with a screw, which causes it to expand against the slot walls, generating high force to secure the PCB.
 
-{% include image-gallery.html images="{filled-enclosure.jpeg}, {pcb-lock.JPG}" height="400" %}
+{% include image-gallery.html images="filled-enclosure.jpeg, pcb-lock.JPG" height="400" %}
 
 ## Traditional Design
 Traditional wedgelocks contain trapezoidal wedges that, when pushed on by a screw, move perpendicular to the axis of engagement of the screw. This outward movement generates the force to secure the PCB.
@@ -34,7 +34,7 @@ This hybrid design combines the engagement mechanism of the traditional wedgeloc
 
 Screw engagement causes the outer faces to bow outwards, generating force against the PCB and slot walls. A second screw holds the wedgelock to the PCB during installation into an enclosure. This design is able to be scaled in length in increments of 3 mm.
 
-{% include image-gallery.html images="{engage-detail.jpeg}, {attach-detail.JPG}" height="400" %}
+{% include image-gallery.html images="engage-detail.jpeg, attach-detail.JPG" height="400" %}
 
 ## Finite Element Analysis (FEA)
 A first estimate for the needed force output from Wedgelocks was about 1500 Newtons (N). This was determined using the assumption that the PCBs weighed 1 pound, were undergoing 50 gs, and were held with 2 Wedgelocks.
@@ -48,4 +48,4 @@ This design performed well in FEA and prototype environments. Further testing wi
 
 > Released under LLNL-POST-867582
 
-*This summary was adapted from my [LLNL Summer Student Symposium Poster](./poster.pdf)*
+*This summary was adapted from my [LLNL Summer Student Symposium Poster].(./poster.pdf)*

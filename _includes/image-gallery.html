@@ -1,23 +1,33 @@
 {% assign image_paths = include.images | split: ", " %}
 {% assign gallery_height = include.height | default: "300" %}
+{% assign caption = include.caption %}
 
-<div class="image-gallery" style="--gallery-height: {{ gallery_height }}px;">
-  {% for image_path in image_paths %}
-      {% assign image_name = image_path | strip %}
-      {% if image_name contains 'https://' %}
-          <img 
-              src="{{ image_name }}"
-              alt="Web image"
-              loading="lazy"
-          />
-      {% else %}
-          {% assign page_url_without_index = page.url | remove: 'index' | remove: '.html' %}
-          <img 
-              src="{{ page_url_without_index }}{{ image_name }}" 
-              alt="{{image_name}}"
-              loading="lazy"
-              onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');"
-          />
-      {% endif %}
-  {% endfor %}
-</div>
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: {{ gallery_height }}px;">
+
+        {% for image_path in image_paths %}
+        {% assign image_name = image_path | strip %}
+        {% if image_name contains 'https://' %}
+        <img src="{{ image_name }}" alt="Web image" loading="lazy"
+            style="height: var(--gallery-height); width: auto; object-fit: contain;" />
+        {% else %}
+        {% assign page_url_without_index = page.url | remove: 'index' | remove: '.html' %}
+        <img src="{{ page_url_without_index }}{{ image_name }}" alt="{{ image_name }}" loading="lazy"
+            style="height: var(--gallery-height); width: auto; object-fit: contain;"
+            onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if caption %}
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        {{ caption }}
+    </figcaption>
+    {% endif %}
+</figure>
