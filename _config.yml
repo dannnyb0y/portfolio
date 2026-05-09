@@ -68,6 +68,7 @@ skills:
     - FMEA
     - FEA
   - category: Software
+    tools:
     - MATLAB
     - C++
     - Python
