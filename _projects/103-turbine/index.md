@@ -34,7 +34,7 @@ The strain gauge output was recorded at 1 gram increments from 1 to 10 grams, an
 
 {% include image-gallery.html images="strain_calibration.jpeg" height="400" caption="Hanging weights from strain gauge during calibration." %}
 
-After aggregating our data, it was found that the relationship between the output voltage $V$ and the weight on the gauge $W$ was $V =-1.85w -1.52$.
+After aggregating our data, it was found that the relationship between the output voltage $$V$$ and the weight on the gauge $$W$$ was $$V =-1.85w -1.52$$.
 
 {% include image-gallery.html images="strain-calibration.png" height="400" caption="Calibration data for strain gauge." %}
 
@@ -43,7 +43,7 @@ The wind tunnel is equipped with a pitot tube used to measure the dynamic pressu
 
 $$v = \sqrt{\frac{2\Delta p}{\rho}} = \sqrt{\frac{2 \Delta p}{\frac{p}{RT}}} = 14.85\sqrt{p}$$
 
-Using this relationship and calibration for the fan speed, we were able to deteremine the relationship between the fan setting and the wind speed to be $S = -0.105 +0.012f+8.78*10^{-7}f^2$, where $f$ is the fan setting and $S$ is the wind speed in meters per second.
+Using this relationship and calibration for the fan speed, we were able to deteremine the relationship between the fan setting and the wind speed to be $$S = -0.105 +0.012f+8.78*10^{-7}f^2$$, where $$f$$ is the fan setting and $$S$$ is the wind speed in meters per second.
 
 ## Testing
 We tested eight airfoil types and measured the lift they generated and the drag exerted on them at a fixed wind speed of 8.5 meters per second.
