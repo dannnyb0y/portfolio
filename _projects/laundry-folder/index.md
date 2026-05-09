@@ -17,11 +17,6 @@ skills:
 main-image: /folder.jpeg
 ---
 
-<script
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
-  type="text/javascript">
-</script>
-
 **Project Type** - UC Berkeley
 
 **Collaborators** - [Kevin Sengsourichanh](https://www.linkedin.com/in/kevin-sengsourichanh-4a4743217/), [Kari Martinez-Espindola](https://www.linkedin.com/in/karista-espindola/)
@@ -34,11 +29,15 @@ This device uses five panels that each rotate through a 180-degree arc in sequen
 
 {% include image-gallery.html images="annotated.png" height="400" %}
 
+## CAD Photos
+
+
 ### Torque Analysis
 
 The main constraint in the design was selecting a motor with enough torque to rotate these panels. The needed torque was calculated as follows:
 
 $$\textbf{Plywood Density} = 680 \frac{\textbf{kg}}{\textbf{m}^3}$$
+
 $$\textbf{PLA Density} = 1240 \frac{\textbf{kg}}{\textbf{m}^3}$$
 
 Assume all weight at end for factor of safety. Ignore mass of axle, as it is about the axis of rotation. Total volume of plywood is $$0.000223$$ m$$^3$$, and total volume of PLA is $$0.00000773$$ m$$^3$$. Total mass $$M_{tot}$$ is then:
@@ -58,3 +57,7 @@ After discussing with machine shop staff, we were lended a set of motors each ca
 This device was programmed in C++ using the Arduino IDE. Each of the motors was controlled by an ESP32. 
 
 add circuit diagram, code, photos
+
+*This summary was adapted from the [Final Report](https://docs.google.com/document/d/1Q8-mAUrHsxxh8q5Bb3gG4dTP_dOAcJHgd8cTut5wHz4/edit?usp=sharing) written for ME102B.*
+
+*The full CAD document can be viewed [here](https://cad.onshape.com/documents/7ef667d42e2f7cedd0cd0583/w/68efd183ed38f5b916108f58/e/3e34a5b84dbeeddc8ce5f76b).*
