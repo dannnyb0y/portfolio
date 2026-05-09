@@ -4,12 +4,15 @@ title: Wedgelock Redesign
 description:  Redesigned an off-the-shelf electronics securement device for in-house manufacturing to reduce costs and lead times for the Lawrence Livermore National Laboratory's Space Science and Security Program.
 skills: 
 - CAD
+- SOLIDWORKS
 - Project Management
+- FEA
+- Documentation
+- 3D Printing
+- GD&T Drawings
 main-image: /pcb-lock.JPG
 ---
 **Project Type** - Internship
-
-**Relevant Skills** - CAD, SOLIDWORKS, Project Management, FEA, Documentation, 3D Printing, GD&T Drawings
 
 **Collaborators** - Charlin Wang (LLNL), Rebecca Griffith (LLNL), Tiffany Yslas (LLNL), Jordan Smilo (LLNL), Jordan Karburn (LLNL), & Joshua Robles (LLNL).
 
