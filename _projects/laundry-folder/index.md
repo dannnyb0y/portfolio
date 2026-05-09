@@ -17,6 +17,11 @@ skills:
 main-image: /folder.jpeg
 ---
 
+<script
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  type="text/javascript">
+</script>
+
 **Project Type** - UC Berkeley
 
 **Collaborators** - [Kevin Sengsourichanh](https://www.linkedin.com/in/kevin-sengsourichanh-4a4743217/), [Kari Martinez-Espindola](https://www.linkedin.com/in/karista-espindola/)
@@ -57,6 +62,8 @@ After discussing with machine shop staff, we were lended a set of motors each ca
 This device was programmed in C++ using the Arduino IDE. Each of the motors was controlled by an ESP32. 
 
 add circuit diagram, code, photos
+
+---
 
 *This summary was adapted from the [Final Report](https://docs.google.com/document/d/1Q8-mAUrHsxxh8q5Bb3gG4dTP_dOAcJHgd8cTut5wHz4/edit?usp=sharing) written for ME102B.*
 

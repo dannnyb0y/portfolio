@@ -75,6 +75,8 @@ The flow cell body was CNC machined out of acetal copolymer in order to achieve 
 
 The pH sensor mounting brackets were cut out of eighth-inch thick aluminum for rigidity.
 
+---
+
 *This summary was adapted from the [Caldera Final Report](https://docs.google.com/document/d/15UWt7Nx078HOP_l3uSlkQTRXH3hPgQmj_iYFd7CG2FA/edit?usp=sharing) submitted for IREC 2024.*
 
 ### Payload Demo Code

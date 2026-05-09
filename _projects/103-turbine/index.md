@@ -11,6 +11,11 @@ skills:
 main-image: /overview.png
 ---
 
+<script
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  type="text/javascript">
+</script>
+
 **Project Type** - UC Berkeley (ME103)
 
 **Collaborators** - Omar Cochinwala, Hamzah Shir, Ezenbaatar Batjargal
@@ -31,7 +36,7 @@ The strain gauge output was recorded at 1 gram increments from 1 to 10 grams, an
 
 After aggregating our data, it was found that the relationship between the output voltage $V$ and the weight on the gauge $W$ was $V =-1.85w -1.52$.
 
-{% include image-gallery.html images="strain_calibration.png" height="400" caption="Calibration data for strain gauge." %}
+{% include image-gallery.html images="strain-calibration.png" height="400" caption="Calibration data for strain gauge." %}
 
 ### Wind Speed
 The wind tunnel is equipped with a pitot tube used to measure the dynamic pressure of the air moving through the tunnel. Bernoulli's principle was used to convert this pressure reading ($p$) into wind speed ($v$):
@@ -75,5 +80,6 @@ Below are CAD images of each airfoil type we tested.
 
 {% include image-gallery.html images="tinydimples.jpg" height="400" %}
 
+---
 
 *This summary was adapted from the [Final Report](../../assets/ME103_Final_Report.pdf) written for the ME103 course.*
