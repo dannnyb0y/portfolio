@@ -24,7 +24,7 @@ main-image: /folder.jpeg
 
 **Project Type** - UC Berkeley
 
-**Collaborators** - [Kevin Sengsourichanh](mailto:kevinsengsou@berkeley.edu), (Kari Martinez-Espindola)[mailto:kari.2133@berkeley.edu]
+**Collaborators** - [Kevin Sengsourichanh](https://www.linkedin.com/in/kevin-sengsourichanh-4a4743217/), [Kari Martinez-Espindola](https://www.linkedin.com/in/karista-espindola/)
 
 ## Opportunity
 Course projects for ME102B are not just about design and prototyping, but about recognizing and solving a problem. This laundry folder was designed to aid anyone with mobility or dexterity issues in folding clothes. Similar devices are on the market but are either expensive or not fully automatic. 
