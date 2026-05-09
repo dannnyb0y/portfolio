@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TRISTAN
+title: KELSE-Y
 description:  Worked with a team of engineers to design, manufacture, and document a life-support system intended to support life on board a rocket. 
 skills: 
 - CAD
