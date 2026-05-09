@@ -39,7 +39,7 @@ After aggregating our data, it was found that the relationship between the outpu
 {% include image-gallery.html images="strain-calibration.png" height="400" caption="Calibration data for strain gauge." %}
 
 ### Wind Speed
-The wind tunnel is equipped with a pitot tube used to measure the dynamic pressure of the air moving through the tunnel. Bernoulli's principle was used to convert this pressure reading ($p$) into wind speed ($v$):
+The wind tunnel is equipped with a pitot tube used to measure the dynamic pressure of the air moving through the tunnel. Bernoulli's principle was used to convert this pressure reading ($$p$$) into wind speed ($$v$$):
 
 $$v = \sqrt{\frac{2\Delta p}{\rho}} = \sqrt{\frac{2 \Delta p}{\frac{p}{RT}}} = 14.85\sqrt{p}$$
 
