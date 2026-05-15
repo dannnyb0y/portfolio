@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <script src="/assets/js/script.js"></script>
+
+    
+    <title>Daniel Grover's Portfolio</title>
+    
+
+</head>
+<body>
+    <!-- NAVBAR -->
+     <!-- _includes/nav.html -->
+<nav>
+    <div class="left">
+        <a href="/">Portfolio</a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="right desktop-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fa fa-bars fa-2x"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+</nav>
+
+     <div class="page"><div class="post-view">
+    <div class="summary">
+        
+       
+        
+               
+        <img src="/_projects/tristan/isometric-cad.png" alt="TRISTAN image">
+        
+        <div class="title-header">
+            <h1>TRISTAN</h1>
+        </div>
+        
+        <div class="project-description">
+            <h2>Project Overview</h2>
+            <p>Led a team of engineers to design and manufacture a prototype device that collected characterizing flight data and tested future ejection hardware.</p>
+        </div>
+        <div class="skills-card">
+            <h2>Skills Used</h2> 
+            <div class="skills-list">
+                
+                <span class="skill">CAD</span>    
+                
+                <span class="skill">Onshape</span>    
+                
+                <span class="skill">Leadership</span>    
+                
+                <span class="skill">Project Management</span>    
+                
+            </div>
+        </div>
+    </div>
+      
+    <div class="content">
+        <p><strong>Project Type</strong> - Space Technologies and Rocketry</p>
+
+<p><strong>Collaborators</strong> - Roman Silivra, Kari Martinez-Espindola, Kevin Sengsourichanh, James Huntszinger, Alli Wang, Adnan Kapadia, Tristan Steen, Kush Mahanjan, Austin Mei</p>
+
+<p>TRISTAN (Thruster-Based Reconnaissance Instrument for Scientific Tracking and Atmospheric Navigation) was a proof-of-concept for an ejectable payload. The goal was to develop a system that would detach itself from a rocket airframe, descend independently, and achieve a controlled landing on the ground. Ultimately, the system was not ejected from the airframe, but rather showed that the relevant electronics and hardware functioned properly, and could be used after further development for a full ejection in the future.</p>
+
+<h2 id="design">Design</h2>
+<p>TRISTAN was a 5U CubeSat design, with dimensions of 10x10x50 cm. This modular design aided in integration with the airframe. The body was comprised of flat aluminum pieces bolted together with M5 hardware and right-angle brackets.</p>
+
+<p>All internal components were fastened to the inside of these walls with 3D printed enclosures and further M5 hardware.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/tristan/isometric-cad.png" alt="isometric-cad.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        Full CAD model of the payload.
+    </figcaption>
+    
+</figure>
+
+<h2 id="ejection-mechanism">Ejection Mechanism</h2>
+<p>TRISTAN used an electromechanical system for ejection, though this system was never used to separate the system from the airframe. It was used solely for telemetry and testing the hardware and software involved.</p>
+
+<p>Linear actuators were used to unlock ball-lock pins housed on either end of the payload. These pins ran through bulkheads in the rocket airframe and once released, allowed the payload to move freely. Heavy springs would then help separate the airframe and the payload would roll out along rails. During the actual flight of this payload, the actuators were fired and the pins unlocked, but the airframe was externally fastened together and the payload was not separated from the airframe.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/tristan/ejection-detail.png" alt="ejection-detail.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        The linear actuator (bottom), unlocks the ball-lock pin (top) and allows it to slide through the circular bulkhead.
+    </figcaption>
+    
+</figure>
+
+<h2 id="electronics-and-software">Electronics and Software</h2>
+<p>TRISTAN had an ESP32 on board that interfaced with a custom-designed PCB to control the linear actuators for the ejection mechanism. This board handled signals from COTS altimeters to trigger the ‘ejection’ script at the correct time.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/tristan/pcb-render.png" alt="pcb-render.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        Render of the custom PCB on board TRISTAN.
+    </figcaption>
+    
+</figure>
+
+<p>Signals from the altimeters were routed into this board, and then the ESP32 would trigger the actuators to extend and unlock the ball-lock pins.</p>
+
+<p><em>This summary was adapted from the <a href="https://docs.google.com/document/d/1zMoW6IU2J_XAg5joyO1CykrFtCasofWYZe8JZcpNa5A/edit?usp=sharing">Excalibur Final Design Report</a> for the 2025 IREC competition.</em></p>
+
+
+    </div>
+</div>
+
+</div>
+
+     
+</body>
+
+    <footer>
+    <div class="footer-content">
+        <div class="links">
+            <a href="/">
+                <span>Home</span>
+            </a>
+            <a href="/projects/">
+                <span>Projects</span>
+            </a>
+            <a href=/assets/resume/Resume.pdf target="_blank" rel="noopener noreferrer">
+                <span>Resume</span>
+            </a>
+        </div>
+    </div>
+    <div class="license">
+        <p>Free-To-Engineer portfolio template © 2025 by lowinertia.com is licensed under <a
+                href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC BY 4.0</a></p>
+    </div>
+</footer>
+</html>

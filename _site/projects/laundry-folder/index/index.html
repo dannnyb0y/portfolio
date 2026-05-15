@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <script src="/assets/js/script.js"></script>
+
+    
+    <title>Daniel Grover's Portfolio</title>
+    
+
+</head>
+<body>
+    <!-- NAVBAR -->
+     <!-- _includes/nav.html -->
+<nav>
+    <div class="left">
+        <a href="/">Portfolio</a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="right desktop-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fa fa-bars fa-2x"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+</nav>
+
+     <div class="page"><div class="post-view">
+    <div class="summary">
+        
+       
+        
+               
+        <img src="/_projects/laundry-folder/folder.jpeg" alt="Laundry Folder Machine image">
+        
+        <div class="title-header">
+            <h1>Laundry Folder Machine</h1>
+        </div>
+        
+        <div class="project-description">
+            <h2>Project Overview</h2>
+            <p>Designed and built a prototype device capable of folding clothes for the user using a relay of motors and Arduino microcontrollers. Developed as part of UC Berkeley's ME102B (Mechatronics Design) course.</p>
+        </div>
+        <div class="skills-card">
+            <h2>Skills Used</h2> 
+            <div class="skills-list">
+                
+                <span class="skill">CAD</span>    
+                
+                <span class="skill">Onshape</span>    
+                
+                <span class="skill">C++</span>    
+                
+                <span class="skill">Arduino</span>    
+                
+                <span class="skill">Breadboarding</span>    
+                
+                <span class="skill">Engineering Drawing</span>    
+                
+                <span class="skill">Lathe</span>    
+                
+                <span class="skill">Laser Cutting</span>    
+                
+                <span class="skill">3D Printing</span>    
+                
+                <span class="skill">Technical Presentation</span>    
+                
+                <span class="skill">Project Management</span>    
+                
+            </div>
+        </div>
+    </div>
+      
+    <div class="content">
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+
+<p><strong>Project Type</strong> - UC Berkeley</p>
+
+<p><strong>Collaborators</strong> - <a href="https://www.linkedin.com/in/kevin-sengsourichanh-4a4743217/">Kevin Sengsourichanh</a>, <a href="https://www.linkedin.com/in/karista-espindola/">Kari Martinez-Espindola</a></p>
+
+<h2 id="opportunity">Opportunity</h2>
+<p>Course projects for ME102B are not just about design and prototyping, but about recognizing and solving a problem. This laundry folder was designed to aid anyone with mobility or dexterity issues in folding clothes. Similar devices are on the market but are either expensive or not fully automatic.</p>
+
+<h2 id="design">Design</h2>
+<p>This device uses five panels that each rotate through a 180-degree arc in sequence to fold a shirt. The user places a shirt down across the five panels and then presses a button to activate the machine. The panels fold over one by one to fold the shirt, with the fifth panel acting as a ‘deposit’ panel to drop the folded shirt into a basket or hamper. The device will not run at the button press unless a potentiometer is turned past an activation threshold. Our initial desired functionality was to fold a shirt successfully, but we were also able to design a device that can fold shorts, pants, and hoodies, along with depositing the article of clothing outside the machine once folded.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/projects/laundry-folder//annotated.png" alt="annotated.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<h2 id="cad-photos">CAD Photos</h2>
+
+<h3 id="torque-analysis">Torque Analysis</h3>
+
+<p>The main constraint in the design was selecting a motor with enough torque to rotate these panels. The needed torque was calculated as follows:</p>
+
+\[\textbf{Plywood Density} = 680 \frac{\textbf{kg}}{\textbf{m}^3}\]
+
+\[\textbf{PLA Density} = 1240 \frac{\textbf{kg}}{\textbf{m}^3}\]
+
+<p>Assume all weight at end for factor of safety. Ignore mass of axle, as it is about the axis of rotation. Total volume of plywood is \(0.000223\) m\(^3\), and total volume of PLA is \(0.00000773\) m\(^3\). Total mass \(M_{tot}\) is then:</p>
+
+\[M_{tot} = 680\frac{\textbf{kg}}{\textbf{m}^3} \cdot 0.000223 \textbf{m}^3 + 1240\frac{\textbf{kg}}{\textbf{m}^3} \cdot 0.00000773\textbf{m}^3 = 0.161 \textbf{kg}\]
+
+<p>Panel length \(l\) is \(24.5 \textbf{in} = 0.6223 \textbf{m}\).
+Torque needed by motor is then:</p>
+
+\[0.161 \textbf{kg} \cdot 9.81 \frac{\textbf{m}}{\textbf{s}^2} \cdot 0.6223 \textbf{m} = 0.983 \textbf{N} \cdot \textbf{m}\]
+
+<p>Round to 1.5 N\(\cdot\)m to account for the weight of the shirt and for a safety factor.</p>
+
+<p>After discussing with machine shop staff, we were lended a set of motors each capable of meeting this torque spec. The rest of the components were designed around the available manufacturing options for our team - laser cutting, basic machining, and 3D printing.</p>
+
+<h2 id="electronics-and-software">Electronics and Software</h2>
+<p>This device was programmed in C++ using the Arduino IDE. Each of the motors was controlled by an ESP32.</p>
+
+<p>add circuit diagram, code, photos</p>
+
+<hr />
+
+<p><em>This summary was adapted from the <a href="https://docs.google.com/document/d/1Q8-mAUrHsxxh8q5Bb3gG4dTP_dOAcJHgd8cTut5wHz4/edit?usp=sharing">Final Report</a> written for ME102B.</em></p>
+
+<p><em>The full CAD document can be viewed <a href="https://cad.onshape.com/documents/7ef667d42e2f7cedd0cd0583/w/68efd183ed38f5b916108f58/e/3e34a5b84dbeeddc8ce5f76b">here</a>.</em></p>
+
+    </div>
+</div>
+
+</div>
+
+     
+</body>
+
+    <footer>
+    <div class="footer-content">
+        <div class="links">
+            <a href="/">
+                <span>Home</span>
+            </a>
+            <a href="/projects/">
+                <span>Projects</span>
+            </a>
+            <a href=/assets/resume/Resume.pdf target="_blank" rel="noopener noreferrer">
+                <span>Resume</span>
+            </a>
+        </div>
+    </div>
+    <div class="license">
+        <p>Free-To-Engineer portfolio template © 2025 by lowinertia.com is licensed under <a
+                href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC BY 4.0</a></p>
+    </div>
+</footer>
+</html>

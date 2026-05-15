@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <script src="/assets/js/script.js"></script>
+
+    
+    <title>Daniel Grover's Portfolio</title>
+    
+
+</head>
+<body>
+    <!-- NAVBAR -->
+     <!-- _includes/nav.html -->
+<nav>
+    <div class="left">
+        <a href="/">Portfolio</a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="right desktop-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fa fa-bars fa-2x"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+</nav>
+
+     <div class="page"><div class="post-view">
+    <div class="summary">
+        
+       
+        
+               
+        <img src="/_projects/103-turbine/overview.png" alt="ME103 Wind Turbine Project image">
+        
+        <div class="title-header">
+            <h1>ME103 Wind Turbine Project</h1>
+        </div>
+        
+        <div class="project-description">
+            <h2>Project Overview</h2>
+            <p>Worked with a team of engineers to design various airfoils and characterize their performance using a wind tunnel. This project was done through UC Berkeley's ME103 course.</p>
+        </div>
+        <div class="skills-card">
+            <h2>Skills Used</h2> 
+            <div class="skills-list">
+                
+                <span class="skill">CAD</span>    
+                
+                <span class="skill">Onshape</span>    
+                
+                <span class="skill">Documentation</span>    
+                
+                <span class="skill">Technical Presentation</span>    
+                
+                <span class="skill">3D Printing</span>    
+                
+            </div>
+        </div>
+    </div>
+      
+    <div class="content">
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+</script>
+
+<p><strong>Project Type</strong> - UC Berkeley (ME103)</p>
+
+<p><strong>Collaborators</strong> - Omar Cochinwala, Hamzah Shir, Ezenbaatar Batjargal</p>
+
+<p>This project aimed to characterize airfoil performance for the sake of improving fuel efficiency for aircraft. Multiple surface geometries were explored, all of which involved dimples or cutouts in the airfoil surface. The project also helped foster a greater understanding of principles of aerodynamics and fluid dynamics. The project was structured as an experiment meant to validate a hypothesis.</p>
+
+<p>Our hypothesis was:</p>
+
+<blockquote>
+  <p>Adding dimples will improve performance through an increase in lift and a decrease in drag.</p>
+</blockquote>
+
+<h2 id="wind-tunnel-calibration">Wind Tunnel Calibration</h2>
+<p>Before we could run any tests, we needed to characterize the measurements output by the various measurement devices present in the Hesse Hall wind tunnel. We calibrated the response from a strain gauge and a pitot tube in order to understand both the speed of the wind moving through the tunnel and the force being exerted on the stand.</p>
+
+<h3 id="strain-gauge">Strain Gauge</h3>
+<p>The strain gauge output was recorded at 1 gram increments from 1 to 10 grams, and then at 10 gram increments from 10 to 100 grams. An additional test was done to avoid the effect of hysteresis on the sensor, where weight was strictly increased from 1 to 100 grams, and then strictly decreased back down to 1. This additional data ensured the calibration curves properly represented the sensor output. During our calibration tests, the strain gauge was oriented at 5 degrees to the horizontal, as measured by a protractor built into the mount. This was the baseline orientation for measurement. Ten data points were recorded after each change in weight. This data was then used to create a calibration curve and an equation that related the raw voltage output of the strain gauge to the force being exerted on it.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/strain_calibration.jpeg" alt="strain_calibration.jpeg" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        Hanging weights from strain gauge during calibration.
+    </figcaption>
+    
+</figure>
+
+<p>After aggregating our data, it was found that the relationship between the output voltage \(V\) and the weight on the gauge \(W\) was \(V =-1.85w -1.52\).</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/strain-calibration.png" alt="strain-calibration.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        Calibration data for strain gauge.
+    </figcaption>
+    
+</figure>
+
+<h3 id="wind-speed">Wind Speed</h3>
+<p>The wind tunnel is equipped with a pitot tube used to measure the dynamic pressure of the air moving through the tunnel. Bernoulli’s principle was used to convert this pressure reading (\(p\)) into wind speed (\(v\)):</p>
+
+\[v = \sqrt{\frac{2\Delta p}{\rho}} = \sqrt{\frac{2 \Delta p}{\frac{p}{RT}}} = 14.85\sqrt{p}\]
+
+<p>Using this relationship and calibration for the fan speed, we were able to deteremine the relationship between the fan setting and the wind speed to be \(S = -0.105 +0.012f+8.78*10^{-7}f^2\), where \(f\) is the fan setting and \(S\) is the wind speed in meters per second.</p>
+
+<h2 id="testing">Testing</h2>
+<p>We tested eight airfoil types and measured the lift they generated and the drag exerted on them at a fixed wind speed of 8.5 meters per second.</p>
+
+<p>The testing steps for each airfoil were as follows:</p>
+<ol>
+  <li>The airfoil was fastened into the tunnel using the mount provided by Hesse Staff.</li>
+  <li>The strain gauge was set to the baseline of 5 degrees.</li>
+  <li>The airfoil was set to an angle of 15 degrees to the horizontal as measured by an angle finder.</li>
+  <li>The wind tunnel was closed and turned on at our experiment speed of 8.5 m/s.</li>
+  <li>20 data points were recorded using the LabView software after the wind reached our experiment speed.</li>
+  <li>The fan was turned off and the strain gauge was rotated 90 degrees clockwise relative to the airfoil to switch to measuring drag.</li>
+  <li>The fan was turned back on and 20 more data points were taken.</li>
+</ol>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/drag-lift-comparison-chart.png" alt="drag-lift-comparison-chart.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        Lift and drag data for each airfoil.
+    </figcaption>
+    
+</figure>
+
+<p>This data ultimately disproved our hypothesis, but it was interesting to learn about the physics at play and about operating and using a wind tunnel. After experimentation, we gave a technical presentation about our findings.</p>
+
+<h2 id="airfoil-designs">Airfoil Designs</h2>
+<p>Below are CAD images of each airfoil type we tested.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/baseairfoil.png" alt="baseairfoil.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/bigdimples.jpg" alt="bigdimples.jpg" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/dimples.jpg" alt="dimples.jpg" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/grooves3.png" alt="grooves3.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/othergrooves.png" alt="othergrooves.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/sideways1.png" alt="sideways1.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/sideways2.png" alt="sideways2.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/103-turbine/tinydimples.jpg" alt="tinydimples.jpg" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+</figure>
+
+<hr />
+
+<p><em>This summary was adapted from the <a href="../../assets/ME103_Final_Report.pdf">Final Report</a> written for the ME103 course.</em></p>
+
+    </div>
+</div>
+
+</div>
+
+     
+</body>
+
+    <footer>
+    <div class="footer-content">
+        <div class="links">
+            <a href="/">
+                <span>Home</span>
+            </a>
+            <a href="/projects/">
+                <span>Projects</span>
+            </a>
+            <a href=/assets/resume/Resume.pdf target="_blank" rel="noopener noreferrer">
+                <span>Resume</span>
+            </a>
+        </div>
+    </div>
+    <div class="license">
+        <p>Free-To-Engineer portfolio template © 2025 by lowinertia.com is licensed under <a
+                href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC BY 4.0</a></p>
+    </div>
+</footer>
+</html>
