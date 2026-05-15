@@ -168,13 +168,310 @@ Torque needed by motor is then:</p>
 <h2 id="electronics-and-software">Electronics and Software</h2>
 <p>This device was programmed in C++ using the Arduino IDE. Each of the motors was controlled by an ESP32.</p>
 
-<p>add circuit diagram, code, photos</p>
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/projects/laundry-folder//circuit.png" alt="circuit.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        Circuit diagram for the device.
+    </figcaption>
+    
+</figure>
+
+<p>See <a href="#code">Laundry Folder Code</a> below.</p>
 
 <hr />
 
 <p><em>This summary was adapted from the <a href="https://docs.google.com/document/d/1Q8-mAUrHsxxh8q5Bb3gG4dTP_dOAcJHgd8cTut5wHz4/edit?usp=sharing">Final Report</a> written for ME102B.</em></p>
 
 <p><em>The full CAD document can be viewed <a href="https://cad.onshape.com/documents/7ef667d42e2f7cedd0cd0583/w/68efd183ed38f5b916108f58/e/3e34a5b84dbeeddc8ce5f76b">here</a>.</em></p>
+
+<hr />
+
+<h3 id="code">Code</h3>
+
+<p>This first block of code was for the ESP32 responsible for handling the button press and communicating with the ESP32s controlling the motors.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;ESP32Encoder.h&gt;</span><span class="cp">
+</span>
+
+<span class="cp">#define PWM_PIN 26
+#define DIR_PIN 25
+#define LED_PIN 13
+#define ENC_A   27
+#define ENC_B   33
+#define BTN_PIN 32
+#define SEND_PIN 4
+#define POT_PIN 36
+</span>
+
+<span class="n">ESP32Encoder</span> <span class="n">encoder</span><span class="p">;</span>
+
+
+<span class="k">enum</span> <span class="n">CaseState</span> <span class="p">{</span>
+ <span class="n">NOT_FOLDING</span><span class="p">,</span>
+ <span class="n">FOLDING</span>
+<span class="p">};</span>
+
+
+<span class="n">CaseState</span> <span class="n">caseState</span> <span class="o">=</span> <span class="n">NOT_FOLDING</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">POT_THRESHOLD</span>  <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">SPEED_PWM</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>        
+<span class="k">const</span> <span class="kt">long</span> <span class="n">TARGET_COUNTS</span> <span class="o">=</span> <span class="mi">700</span><span class="p">;</span>  
+<span class="k">volatile</span> <span class="kt">bool</span> <span class="n">buttonIsPressed</span>      <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="k">volatile</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">lastPress</span>   <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">debounceTimeMs</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+
+
+<span class="kt">bool</span> <span class="n">CheckForButtonPress</span><span class="p">();</span>
+<span class="kt">void</span> <span class="n">led_on</span><span class="p">();</span>
+<span class="kt">void</span> <span class="n">led_off</span><span class="p">();</span>
+
+
+<span class="kt">void</span> <span class="n">IRAM_ATTR</span> <span class="n">isr</span><span class="p">()</span> <span class="p">{</span>
+ <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">lastPress</span> <span class="o">&gt;</span> <span class="n">debounceTimeMs</span><span class="p">)</span> <span class="p">{</span>  
+   <span class="n">buttonIsPressed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+   <span class="n">lastPress</span> <span class="o">=</span> <span class="n">now</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="n">sendPulseToReceiver</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">SEND_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+ <span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>                
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">SEND_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">POT_PIN</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+ <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+ <span class="n">encoder</span><span class="p">.</span><span class="n">attachHalfQuad</span><span class="p">(</span><span class="n">ENC_A</span><span class="p">,</span> <span class="n">ENC_B</span><span class="p">);</span>
+ <span class="n">encoder</span><span class="p">.</span><span class="n">setCount</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">BTN_PIN</span><span class="p">,</span> <span class="n">INPUT_PULLDOWN</span><span class="p">);</span> 
+ <span class="n">attachInterrupt</span><span class="p">(</span><span class="n">BTN_PIN</span><span class="p">,</span> <span class="n">isr</span><span class="p">,</span> <span class="n">RISING</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">SEND_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">SEND_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+ <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"State: CASE 1 - NOT FOLDING"</span><span class="p">);</span>
+ <span class="n">led_off</span><span class="p">();</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">switch</span> <span class="p">(</span><span class="n">caseState</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">case</span> <span class="n">NOT_FOLDING</span><span class="p">:</span> <span class="p">{</span>
+     <span class="kt">int</span> <span class="n">potValue</span> <span class="o">=</span> <span class="n">analogRead</span><span class="p">(</span><span class="n">POT_PIN</span><span class="p">);</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">CheckForButtonPress</span><span class="p">())</span> <span class="p">{</span>
+       <span class="k">if</span> <span class="p">(</span><span class="n">potValue</span> <span class="o">&gt;</span> <span class="n">POT_THRESHOLD</span><span class="p">)</span> <span class="p">{</span>
+         <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Allowed to Fold"</span><span class="p">);</span>
+         <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"FOLDING"</span><span class="p">);</span>
+         <span class="n">led_on</span><span class="p">();</span>
+         <span class="n">caseState</span> <span class="o">=</span> <span class="n">FOLDING</span><span class="p">;</span>
+       <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+         <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Not allowed to fold, turn potentiometer"</span><span class="p">);</span>
+       <span class="p">}</span>
+     <span class="p">}</span>
+     <span class="k">break</span><span class="p">;</span>
+   <span class="p">}</span>
+  <span class="k">case</span> <span class="n">FOLDING</span><span class="p">:</span> <span class="p">{</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[CASE 2: FOLDING]"</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Rotating CW"</span><span class="p">);</span>
+     <span class="n">encoder</span><span class="p">.</span><span class="n">setCount</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+     <span class="n">digitalWrite</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>   <span class="c1">// CCW</span>
+     <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="n">SPEED_PWM</span><span class="p">);</span>
+     <span class="k">while</span> <span class="p">(</span><span class="n">abs</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">encoder</span><span class="p">.</span><span class="n">getCount</span><span class="p">())</span> <span class="o">&lt;</span> <span class="n">TARGET_COUNTS</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+     <span class="p">}</span>
+     <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"CW complete"</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Rotating CCW"</span><span class="p">);</span>
+     <span class="n">encoder</span><span class="p">.</span><span class="n">setCount</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+     <span class="n">digitalWrite</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>    <span class="c1">// CW</span>
+     <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="n">SPEED_PWM</span><span class="p">);</span>
+     <span class="k">while</span> <span class="p">(</span><span class="n">abs</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">encoder</span><span class="p">.</span><span class="n">getCount</span><span class="p">())</span> <span class="o">&lt;</span> <span class="n">TARGET_COUNTS</span> <span class="o">-</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+     <span class="p">}</span>
+     <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"CCW complete"</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Returning to CASE 1: NOT FOLDING"</span><span class="p">);</span>
+     <span class="n">sendPulseToReceiver</span><span class="p">();</span> <span class="c1">//send signal to next esp</span>
+     <span class="n">caseState</span> <span class="o">=</span> <span class="n">NOT_FOLDING</span><span class="p">;</span>
+     <span class="n">led_off</span><span class="p">();</span>
+   <span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">bool</span> <span class="n">CheckForButtonPress</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">buttonIsPressed</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">buttonIsPressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+   <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="n">led_on</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="n">led_off</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This block of code was running on the ESP32s controlling the motors.</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;Arduino.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;ESP32Encoder.h&gt;</span><span class="cp">
+</span>
+
+<span class="cp">#define PWM_PIN 26          // MD13S PWM pin
+#define DIR_PIN 25          // MD13S DIR pin
+#define LED_PIN 13        
+#define ENC_A   27          // Encoder A
+#define ENC_B   33          // Encoder B
+#define RECV_PIN 14         // Signal from sender ESP32
+#define SEND_PIN 4          // send signal pin
+</span>
+
+<span class="n">ESP32Encoder</span> <span class="n">encoder</span><span class="p">;</span>
+
+
+<span class="k">enum</span> <span class="n">CaseState</span> <span class="p">{</span>
+ <span class="n">NOT_FOLDING</span><span class="p">,</span>
+ <span class="n">FOLDING</span>
+<span class="p">};</span>
+
+
+<span class="n">CaseState</span> <span class="n">caseState</span> <span class="o">=</span> <span class="n">NOT_FOLDING</span><span class="p">;</span>
+
+
+
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">SPEED_PWM</span> <span class="o">=</span> <span class="mi">128</span><span class="p">;</span>         <span class="c1">// speed</span>
+<span class="k">const</span> <span class="kt">long</span> <span class="n">TARGET_COUNTS</span> <span class="o">=</span> <span class="mi">600</span><span class="p">;</span>   <span class="c1">// encoder desired counts</span>
+<span class="k">volatile</span> <span class="kt">bool</span> <span class="n">buttonIsPressed</span>      <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="k">volatile</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">lastPress</span>   <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>     
+<span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">debounceTimeMs</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+
+<span class="kt">bool</span> <span class="n">CheckForButtonPress</span><span class="p">();</span>
+<span class="kt">void</span> <span class="n">led_on</span><span class="p">();</span>
+<span class="kt">void</span> <span class="n">led_off</span><span class="p">();</span>
+
+
+<span class="kt">void</span> <span class="n">IRAM_ATTR</span> <span class="n">isr</span><span class="p">()</span> <span class="p">{</span>
+ <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">now</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">now</span> <span class="o">-</span> <span class="n">lastPress</span> <span class="o">&gt;</span> <span class="n">debounceTimeMs</span><span class="p">)</span> <span class="p">{</span>  
+   <span class="n">buttonIsPressed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+   <span class="n">lastPress</span> <span class="o">=</span> <span class="n">now</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="n">sendPulseToReceiver</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">SEND_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+ <span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>                
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">SEND_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+ <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>             
+ <span class="n">encoder</span><span class="p">.</span><span class="n">attachHalfQuad</span><span class="p">(</span><span class="n">ENC_A</span><span class="p">,</span> <span class="n">ENC_B</span><span class="p">);</span>
+ <span class="n">encoder</span><span class="p">.</span><span class="n">setCount</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">RECV_PIN</span><span class="p">,</span> <span class="n">INPUT_PULLDOWN</span><span class="p">);</span>
+ <span class="n">attachInterrupt</span><span class="p">(</span><span class="n">RECV_PIN</span><span class="p">,</span> <span class="n">isr</span><span class="p">,</span> <span class="n">RISING</span><span class="p">);</span>
+ <span class="n">pinMode</span><span class="p">(</span><span class="n">SEND_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">SEND_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+ <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"State: CASE 1 — NOT FOLDING"</span><span class="p">);</span>
+ <span class="n">led_off</span><span class="p">();</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">switch</span> <span class="p">(</span><span class="n">caseState</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">case</span> <span class="n">NOT_FOLDING</span><span class="p">:</span> <span class="c1">// first case</span>
+     <span class="k">if</span> <span class="p">(</span><span class="n">CheckForButtonPress</span><span class="p">())</span> <span class="p">{</span>
+       <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"FOLDING"</span><span class="p">);</span>
+       <span class="n">led_on</span><span class="p">();</span>     
+       <span class="n">caseState</span> <span class="o">=</span> <span class="n">FOLDING</span><span class="p">;</span>
+     <span class="p">}</span>
+     <span class="k">break</span><span class="p">;</span>
+
+
+   <span class="k">case</span> <span class="n">FOLDING</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// second case</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"[CASE 2: FOLDING]"</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Rotating CW"</span><span class="p">);</span>
+     <span class="n">encoder</span><span class="p">.</span><span class="n">setCount</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+     <span class="n">digitalWrite</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>   <span class="c1">// CW</span>
+     <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="n">SPEED_PWM</span><span class="p">);</span>
+     <span class="k">while</span> <span class="p">(</span><span class="n">abs</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">encoder</span><span class="p">.</span><span class="n">getCount</span><span class="p">())</span> <span class="o">&lt;</span> <span class="n">TARGET_COUNTS</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+     <span class="p">}</span>
+     <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"CW complete"</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Rotating CCW"</span><span class="p">);</span>
+     <span class="n">encoder</span><span class="p">.</span><span class="n">setCount</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+     <span class="n">digitalWrite</span><span class="p">(</span><span class="n">DIR_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>    <span class="c1">// CCW</span>
+     <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="n">SPEED_PWM</span><span class="p">);</span>
+     <span class="k">while</span> <span class="p">(</span><span class="n">abs</span><span class="p">((</span><span class="kt">long</span><span class="p">)</span><span class="n">encoder</span><span class="p">.</span><span class="n">getCount</span><span class="p">())</span> <span class="o">&lt;</span> <span class="n">TARGET_COUNTS</span> <span class="o">-</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+       <span class="n">delay</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+     <span class="p">}</span>
+     <span class="n">analogWrite</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"CCW complete"</span><span class="p">);</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Returning to CASE 1: NOT FOLDING"</span><span class="p">);</span>
+     <span class="n">sendPulseToReceiver</span><span class="p">();</span> <span class="c1">//send signal to next esp</span>
+     <span class="n">caseState</span> <span class="o">=</span> <span class="n">NOT_FOLDING</span><span class="p">;</span>
+     <span class="n">led_off</span><span class="p">();</span>
+   <span class="p">}</span> <span class="k">break</span><span class="p">;</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// event checkers</span>
+
+
+<span class="kt">bool</span> <span class="n">CheckForButtonPress</span><span class="p">()</span> <span class="p">{</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">buttonIsPressed</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">buttonIsPressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+   <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+ <span class="p">}</span>
+ <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="n">led_on</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span> <span class="n">led_off</span><span class="p">()</span> <span class="p">{</span>
+ <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
 
     </div>
 </div>
