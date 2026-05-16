@@ -22,9 +22,7 @@ main-image: /overview.png
 
 This project aimed to characterize airfoil performance for the sake of improving fuel efficiency for aircraft. Multiple surface geometries were explored, all of which involved dimples or cutouts in the airfoil surface. The project also helped foster a greater understanding of principles of aerodynamics and fluid dynamics. The project was structured as an experiment meant to validate a hypothesis.
 
-Our hypothesis was:
-
-> Adding dimples will improve performance through an increase in lift and a decrease in drag.
+Our hypothesis was: **Adding dimples will improve performance through an increase in lift and a decrease in drag.**
 
 ## Wind Tunnel Calibration
 Before we could run any tests, we needed to characterize the measurements output by the various measurement devices present in the Hesse Hall wind tunnel. We calibrated the response from a strain gauge and a pitot tube in order to understand both the speed of the wind moving through the tunnel and the force being exerted on the stand. 

@@ -16,7 +16,7 @@ main-image: /pcb-lock.JPG
 
 **Collaborators** - Charlin Wang (LLNL), Rebecca Griffith (LLNL), Tiffany Yslas (LLNL), Jordan Smilo (LLNL), Jordan Karburn (LLNL), & Joshua Robles (LLNL).
 
-> Released under LLNL-POST-867582
+**Released under LLNL-POST-867582**
 
 ## Wedgelocks and PCB Mounting
 Wedgelocks are used to fasten PCBs in slotted mechanical enclosures. They are mounted on both sides of a PCB and the assembly is slotted into place. The Wedgelock is then engaged with a screw, which causes it to expand against the slot walls, generating high force to secure the PCB.
@@ -51,6 +51,6 @@ Simulation done on the compliant design (material choice of 7075 Aluminum) via F
 ## Next Steps
 This design performed well in FEA and prototype environments. Further testing will need to be done to determine effectiveness under real loading, along with using different materials and manufacturing methods. 
 
-> Released under LLNL-POST-867582
+**Released under LLNL-POST-867582**
 
 *This summary was adapted from my [LLNL Summer Student Symposium Poster](../../assets/symposium-poster.pdf).*
