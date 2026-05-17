@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <script src="/assets/js/script.js"></script>
+
+    
+    <title>Daniel Grover's Portfolio</title>
+    
+
+</head>
+<body>
+    <!-- NAVBAR -->
+     <!-- _includes/nav.html -->
+<nav>
+    <div class="left">
+        <a href="/">Portfolio</a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="right desktop-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fa fa-bars fa-2x"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+</nav>
+
+     <div class="page"><div class="post-view">
+    <div class="summary">
+        
+       
+        
+               
+        <img src="/_projects/maze-robot/main.jpeg" alt="Maze Solving Robot image">
+        
+        <div class="title-header">
+            <h1>Maze Solving Robot</h1>
+        </div>
+        
+        <div class="project-description">
+            <h2>Project Overview</h2>
+            <p>Equipped a robot with sensors and coded it to navigate through a maze.</p>
+        </div>
+        <div class="skills-card">
+            <h2>Skills Used</h2> 
+            <div class="skills-list">
+                
+                <span class="skill">Arduino</span>    
+                
+                <span class="skill">C++</span>    
+                
+                <span class="skill">Electronics</span>    
+                
+            </div>
+        </div>
+    </div>
+      
+    <div class="content">
+        <p><strong>Project Type</strong> - High School</p>
+
+<p><strong>Collaborators</strong> - Hamzah Shir</p>
+
+<p>This project’s challenge was to customize and code an existing robotic frame to navigate a maze as efficiently as possible. The project was scored by the amount of “tiles” that the robot covered within a given time frame - the more tiles covered, the better.</p>
+
+<h2 id="component-choice">Component Choice</h2>
+<p>The robot frame used for this project was a Lego Mindstorm. The robot as given had two motors to drive its wheels, and we were given the options to equip it with any of the following:</p>
+
+<ul>
+  <li>Light sensor - detected light reflected off of a surface and output an analog reading (0 to 255). This was used to detect a small centered white strip along the otherwise black floor of the maze.</li>
+  <li>Ultrasonic sensor - detected when walls were near the sensor via ultrasonic waves. This was used to tell the robot when it was about to hit a wall.</li>
+  <li>Touch sensor - detected when wall were near by physically hitting them and causing a button to be pressed. This was used to tell the robot when it had hit a wall.</li>
+</ul>
+
+<p>Our team went with the light and ultrasonic sensors. This allowed our robot to stay centered in the maze while being able to navigate around walls.</p>
+
+<h2 id="software">Software</h2>
+<p>The robot was coded using the Arduino IDE. Our team’s approach to maximizing our area coverage was simple. The robot would follow the white line along the floor, using the light sensor as guidance. When the robot encountered a wall, it would turn to the left 90 degrees. This algorithm allowed our robot to navigate through the entire maze within the time limit.</p>
+
+<p>This code was used on the robot:</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//declarations</span>
+<span class="c1">//black on the floor is 19 and 20 on light sensor</span>
+<span class="c1">//evshield</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;EVShield.h&gt;</span><span class="cp">
+</span><span class="n">EVShield</span> <span class="nf">evshield</span><span class="p">(</span><span class="mh">0x34</span><span class="p">,</span> <span class="mh">0x36</span><span class="p">);</span>
+
+<span class="c1">//light sensor</span>
+<span class="cp">#include</span> <span class="cpf">&lt;EVs_NXTLight.h&gt;</span><span class="cp">
+</span><span class="n">EVs_NXTLight</span> <span class="n">light1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">lightvalue</span><span class="p">;</span>
+
+<span class="c1">//ultrasonic sensor</span>
+<span class="cp">#include</span> <span class="cpf">&lt;NewPing.h&gt;</span><span class="cp">
+</span><span class="n">NewPing</span> <span class="nf">sonar</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">190</span><span class="p">);</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sonarvalue</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">//start evshield</span>
+  <span class="n">evshield</span><span class="p">.</span><span class="n">init</span><span class="p">(</span> <span class="n">SH_HardwareI2C</span> <span class="p">);</span>
+  <span class="n">evshield</span><span class="p">.</span><span class="n">waitForButtonPress</span><span class="p">(</span><span class="n">BTN_GO</span><span class="p">);</span>
+
+  <span class="c1">//start light sensor</span>
+  <span class="n">light1</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">evshield</span><span class="p">,</span> <span class="n">SH_BAS1</span><span class="p">);</span>
+  <span class="n">light1</span><span class="p">.</span><span class="n">setReflected</span><span class="p">();</span>
+
+  <span class="c1">//start serial monitor</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">//read light sensor</span>
+  <span class="n">lightvalue</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">light1</span><span class="p">.</span><span class="n">readRaw</span><span class="p">(),</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"light sensor reading: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">lightvalue</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">lightvalue</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">)</span>  <span class="p">{</span>
+
+    <span class="c1">//drive forward with veer to the right</span>
+    <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunUnlimited</span><span class="p">(</span><span class="n">SH_Motor_1</span><span class="p">,</span> <span class="n">SH_Direction_Reverse</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+    <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunUnlimited</span><span class="p">(</span><span class="n">SH_Motor_2</span><span class="p">,</span> <span class="n">SH_Direction_Forward</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+
+    <span class="n">lightvalue</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">light1</span><span class="p">.</span><span class="n">readRaw</span><span class="p">(),</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"light sensor reading: "</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">lightvalue</span><span class="p">);</span>
+  <span class="p">}</span>
+
+
+
+  <span class="c1">//get back onto the line</span>
+  <span class="n">lightvalue</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">light1</span><span class="p">.</span><span class="n">readRaw</span><span class="p">(),</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"light sensor reading: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">lightvalue</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">lightvalue</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//pivot left</span>
+    <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunUnlimited</span><span class="p">(</span><span class="n">SH_Motor_1</span><span class="p">,</span> <span class="n">SH_Direction_Forward</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+    <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunUnlimited</span><span class="p">(</span><span class="n">SH_Motor_2</span><span class="p">,</span> <span class="n">SH_Direction_Reverse</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
+
+    <span class="n">lightvalue</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">light1</span><span class="p">.</span><span class="n">readRaw</span><span class="p">(),</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+    <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"light sensor reading: "</span><span class="p">);</span>
+    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">lightvalue</span><span class="p">);</span>
+
+    <span class="n">sonarvalue</span> <span class="o">=</span> <span class="n">sonar</span><span class="p">.</span><span class="n">ping</span><span class="p">()</span> <span class="o">/</span> <span class="n">US_ROUNDTRIP_CM</span><span class="p">;</span>
+
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">sonarvalue</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="o">&amp;&amp;</span> <span class="n">sonarvalue</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+
+
+    <span class="n">sonarvalue</span> <span class="o">=</span> <span class="n">sonar</span><span class="p">.</span><span class="n">ping</span><span class="p">()</span> <span class="o">/</span> <span class="n">US_ROUNDTRIP_CM</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sonarvalue</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="o">&amp;&amp;</span> <span class="n">sonarvalue</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+
+      <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunDegrees</span><span class="p">(</span><span class="n">SH_Motor_1</span><span class="p">,</span> <span class="n">SH_Direction_Forward</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="n">SH_Completion_Dont_Wait</span><span class="p">,</span>  <span class="n">SH_Next_Action_Brake</span><span class="p">);</span>
+      <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunDegrees</span><span class="p">(</span><span class="n">SH_Motor_2</span><span class="p">,</span> <span class="n">SH_Direction_Reverse</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="n">SH_Completion_Wait_For</span><span class="p">,</span>  <span class="n">SH_Next_Action_Brake</span><span class="p">);</span> <span class="c1">//tweak motor speeds</span>
+
+      <span class="n">delay</span><span class="p">(</span><span class="mi">800</span><span class="p">);</span>
+
+      <span class="n">sonarvalue</span> <span class="o">=</span> <span class="n">sonar</span><span class="p">.</span><span class="n">ping</span><span class="p">()</span> <span class="o">/</span> <span class="n">US_ROUNDTRIP_CM</span><span class="p">;</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="n">sonarvalue</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="o">&amp;&amp;</span> <span class="n">sonarvalue</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunDegrees</span><span class="p">(</span><span class="n">SH_Motor_1</span><span class="p">,</span> <span class="n">SH_Direction_Forward</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="n">SH_Completion_Dont_Wait</span><span class="p">,</span>  <span class="n">SH_Next_Action_Brake</span><span class="p">);</span>
+        <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunDegrees</span><span class="p">(</span><span class="n">SH_Motor_2</span><span class="p">,</span> <span class="n">SH_Direction_Reverse</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="n">SH_Completion_Wait_For</span><span class="p">,</span>  <span class="n">SH_Next_Action_Brake</span><span class="p">);</span> <span class="c1">//tweak motor speeds</span>
+
+        <span class="n">delay</span><span class="p">(</span><span class="mi">800</span><span class="p">);</span>
+
+        <span class="n">sonarvalue</span> <span class="o">=</span> <span class="n">sonar</span><span class="p">.</span><span class="n">ping</span><span class="p">()</span> <span class="o">/</span> <span class="n">US_ROUNDTRIP_CM</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">sonarvalue</span> <span class="o">&lt;=</span> <span class="mi">8</span> <span class="o">&amp;&amp;</span> <span class="n">sonarvalue</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+
+          <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunDegrees</span><span class="p">(</span><span class="n">SH_Motor_1</span><span class="p">,</span> <span class="n">SH_Direction_Forward</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="n">SH_Completion_Dont_Wait</span><span class="p">,</span>  <span class="n">SH_Next_Action_Brake</span><span class="p">);</span>
+          <span class="n">evshield</span><span class="p">.</span><span class="n">bank_b</span><span class="p">.</span><span class="n">motorRunDegrees</span><span class="p">(</span><span class="n">SH_Motor_2</span><span class="p">,</span> <span class="n">SH_Direction_Reverse</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="n">SH_Completion_Wait_For</span><span class="p">,</span>  <span class="n">SH_Next_Action_Brake</span><span class="p">);</span> <span class="c1">//tweak motor speeds</span>
+
+          <span class="n">delay</span><span class="p">(</span><span class="mi">800</span><span class="p">);</span>
+
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>This code was used to calibrate our sensors during testing:</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">//evshield</span>
+<span class="cp">#include</span> <span class="cpf">&lt;Wire.h&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;EVShield.h&gt;</span><span class="cp">
+</span><span class="n">EVShield</span> <span class="nf">evshield</span><span class="p">(</span><span class="mh">0x34</span><span class="p">,</span> <span class="mh">0x36</span><span class="p">);</span>
+
+<span class="c1">//ultrasonic sensor</span>
+<span class="cp">#include</span> <span class="cpf">&lt;NewPing.h&gt;</span><span class="c1">s</span><span class="cp">
+</span><span class="n">NewPing</span> <span class="nf">sonar</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">213</span><span class="p">);</span>
+<span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">sonarvalue</span><span class="p">;</span>
+
+<span class="c1">//light sensor</span>
+<span class="cp">#include</span> <span class="cpf">&lt;EVs_NXTLight.h&gt;</span><span class="cp">
+</span><span class="n">EVs_NXTLight</span> <span class="n">light1</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">lightvalue</span><span class="p">;</span>
+
+<span class="c1">//touch sensor</span>
+<span class="cp">#include</span> <span class="cpf">&lt;EVs_NXTTouch.h&gt;</span><span class="cp">
+</span><span class="n">EVs_NXTTouch</span> <span class="n">touch1</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">touchvalue</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">//start evshield</span>
+  <span class="n">evshield</span><span class="p">.</span><span class="n">init</span><span class="p">(</span> <span class="n">SH_HardwareI2C</span> <span class="p">);</span>
+  <span class="n">evshield</span><span class="p">.</span><span class="n">waitForButtonPress</span><span class="p">(</span><span class="n">BTN_GO</span><span class="p">);</span>
+
+  <span class="c1">//start serial monitor</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+
+  <span class="c1">//start touch sensor</span>
+  <span class="n">touch1</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">evshield</span><span class="p">,</span> <span class="n">SH_BAS1</span><span class="p">);</span> <span class="c1">//possible port change</span>
+
+  <span class="c1">//start light sensor</span>
+  <span class="n">light1</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">evshield</span><span class="p">,</span> <span class="n">SH_BAS2</span><span class="p">);</span>
+  <span class="n">light1</span><span class="p">.</span><span class="n">setReflected</span><span class="p">();</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="n">sonarvalue</span> <span class="o">=</span> <span class="n">sonar</span><span class="p">.</span><span class="n">ping</span><span class="p">()</span> <span class="o">?</span> <span class="n">US_ROUNDTRIP_CM</span><span class="p">;</span>
+  <span class="n">lightvalue</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">light1</span><span class="p">.</span><span class="n">readRaw</span><span class="p">(),</span> <span class="mi">1023</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+  <span class="n">touchvalue</span> <span class="o">=</span> <span class="n">touch1</span><span class="p">.</span><span class="n">isPressed</span><span class="p">();</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"ultrasonic reading: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">sonarvalue</span><span class="p">);</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"light sensor reading: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">lightvalue</span><span class="p">);</span>
+
+  <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"touch sensor reading: "</span><span class="p">);</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">touchvalue</span><span class="p">);</span>
+
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+    </div>
+</div>
+
+</div>
+
+     
+</body>
+
+    <footer>
+    <div class="footer-content">
+        <div class="links">
+            <a href="/">
+                <span>Home</span>
+            </a>
+            <a href="/projects/">
+                <span>Projects</span>
+            </a>
+            <a href=/assets/resume/Resume.pdf target="_blank" rel="noopener noreferrer">
+                <span>Resume</span>
+            </a>
+        </div>
+    </div>
+    <div class="license">
+        <p>Free-To-Engineer portfolio template © 2025 by lowinertia.com is licensed under <a
+                href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC BY 4.0</a></p>
+    </div>
+</footer>
+</html>

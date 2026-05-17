@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <script src="/assets/js/script.js"></script>
+
+    
+    <title>Daniel Grover's Portfolio</title>
+    
+
+</head>
+<body>
+    <!-- NAVBAR -->
+     <!-- _includes/nav.html -->
+<nav>
+    <div class="left">
+        <a href="/">Portfolio</a>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="right desktop-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fa fa-bars fa-2x"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-nav">
+        <a href="/">
+            <span>Home</span>
+        </a>
+        <a href="/projects/">
+            <span>Projects</span>
+        </a>
+        <a href="/assets/resume/Resume.pdf" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+        </a>
+    </div>
+</nav>
+
+     <div class="page"><div class="post-view">
+    <div class="summary">
+        
+       
+        
+               
+        <img src="/_projects/red-light-green-light/main.png" alt="Red Light Green Light image">
+        
+        <div class="title-header">
+            <h1>Red Light Green Light</h1>
+        </div>
+        
+        <div class="project-description">
+            <h2>Project Overview</h2>
+            <p>Designed and prototyped a tabletop electronic version of the classic game 'Red Light Green Light'.</p>
+        </div>
+        <div class="skills-card">
+            <h2>Skills Used</h2> 
+            <div class="skills-list">
+                
+                <span class="skill">CAD</span>    
+                
+                <span class="skill">Onshape</span>    
+                
+                <span class="skill">Documentation</span>    
+                
+                <span class="skill">Technical Presentation</span>    
+                
+                <span class="skill">3D Printing</span>    
+                
+                <span class="skill">Arduino</span>    
+                
+                <span class="skill">Circuit Design</span>    
+                
+            </div>
+        </div>
+    </div>
+      
+    <div class="content">
+        <p><strong>Project Type</strong> - High School</p>
+
+<p><strong>Collaborators</strong> - Benny Marenco</p>
+
+<p>The Red Light Green Light project was a translation of the classic game Red Light Green Light into an electronic board game. 4 motors drove 4 rubber conveyor belts that carried 3D printed figurines down the board. A light post with a green and red LED would flash at random intervals, signaling players to press buttons under their lanes to advance their characters. Pressing a button during a red light would move the player backwards automatically as a penalty. First one to the end won!</p>
+
+<p>This project was not completed due to time restrictions. It was manufactured and assembled with circuitry, but was not ever properly operated.</p>
+
+<p>This project was done through the Product Design class offered by the Space &amp; Engineering Academy at Merrill F West High School.</p>
+
+<h2 id="cad-and-design">CAD and Design</h2>
+<p>The main base of the game was laser cut from balsa wood. The top of it, the light post, the motor mounts, and the figurines were 3D printed. The conveyor belts were laser cut from stamp rubber and sewn together to form loops.</p>
+
+<p>See the <a href="../../assets/red-light-green-light/assembly.pdf">Assembly Drawing</a> and <a href="../../assets/red-light-green-light/belt-sub/pdf">Belt Sub-Assembly Drawings</a> (PDF downloads).</p>
+
+<h2 id="electronics-and-software">Electronics and Software</h2>
+<p>Red Light Green Light ran off an Arduino and used extension boards called shift registers to control the four motors, along with an additional battery pack. The Arduino also controlled the 4 buttons and the 2 LEDs.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/_projects/red-light-green-light/circuit-diagram.png" alt="circuit-diagram.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        Circuit diagram for the game.
+    </figcaption>
+    
+</figure>
+
+<h3 id="code"><strong>Code</strong></h3>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Buttons</span>
+<span class="kt">int</span> <span class="n">buttPin1</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">buttPin2</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">buttPin3</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">buttPin4</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+
+<span class="c1">// LEDs</span>
+<span class="kt">int</span> <span class="n">redPin</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">greenPin</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span>
+<span class="c1">////////////////////////////////////////////////// ShiftReg1:           ShiftReg2:</span>
+<span class="c1">// Shift Register 1                             // [0]: N/A             [0]: N/A</span>
+<span class="kt">int</span> <span class="n">datapin</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>                                <span class="c1">// [1]: N/A             [1]: Keep at 1</span>
+<span class="kt">int</span> <span class="n">clockpin</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>                               <span class="c1">// [2]: 1: Motor1 Rev   [2]: 1: Motor3 Rev</span>
+<span class="kt">int</span> <span class="n">latchpin</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>                               <span class="c1">// [3]: 1: Motor1 Fwd   [3]: 1: Motor3 Fwd</span>
+<span class="n">byte</span> <span class="n">data</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>                                  <span class="c1">// [4]: Keep at 1       [4]: N/A</span>
+<span class="kt">int</span> <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>    <span class="c1">// [5]: 1: Motor2 Rev   [5]: 1: Motor4 Rev</span>
+<span class="c1">////////////////////////////////////////////////// [6]: Keep a 1        [6]: Keep at 1</span>
+<span class="c1">// Shift Register 2                             // [7]: 1: Motor2 Fwd   [7]: 1: Motor4 Fwd</span>
+<span class="kt">int</span> <span class="n">datapin2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">clockpin2</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">latchpin2</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">byte</span> <span class="n">data2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+
+<span class="c1">// Other</span>
+<span class="kt">int</span> <span class="n">rNum</span><span class="p">;</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">saveTime</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+<span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">greenTime</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+<span class="kt">bool</span> <span class="n">isGreen</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">isCaught1</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">isCaught2</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">isCaught3</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">isCaught4</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">doStartup</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">//Buttons</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">buttPin1</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">buttPin2</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">buttPin3</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">buttPin4</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+
+  <span class="c1">//LEDs</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+
+  <span class="c1">//Shift Register</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">datapin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">clockpin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">latchpin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">datapin2</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">clockpin2</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">latchpin2</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+
+  <span class="c1">//Misc</span>
+  <span class="n">randomSeed</span><span class="p">(</span><span class="n">analogRead</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+  <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">doShift</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="cm">/* =============== SHIFT REGISTER CONTROL =============== */</span>
+
+  <span class="c1">// ShiftRegister 1</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">bitWrite</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">shiftReg1</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="n">shiftOut</span><span class="p">(</span><span class="n">datapin</span><span class="p">,</span> <span class="n">clockpin</span><span class="p">,</span> <span class="n">MSBFIRST</span><span class="p">,</span> <span class="n">data</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">latchpin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">latchpin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+
+  <span class="c1">// ShiftRegister 2</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">bitWrite</span><span class="p">(</span><span class="n">data2</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">shiftReg2</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+  <span class="p">}</span>
+  <span class="n">shiftOut</span><span class="p">(</span><span class="n">datapin2</span><span class="p">,</span> <span class="n">clockpin2</span><span class="p">,</span> <span class="n">MSBFIRST</span><span class="p">,</span> <span class="n">data2</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">latchpin2</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+  <span class="n">digitalWrite</span><span class="p">(</span><span class="n">latchpin2</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+
+  <span class="cm">/* ====================================================== */</span>
+
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="k">while</span> <span class="p">(</span><span class="n">doStartup</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">250</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">doStartup</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="n">doShift</span><span class="p">();</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">isGreen</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="n">isCaught1</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">isCaught2</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">isCaught3</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">isCaught4</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+    <span class="c1">// Turn Motors On/Off w/ Buttons</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttPin1</span><span class="p">)</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>         <span class="c1">// Motor 1</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttPin2</span><span class="p">)</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>         <span class="c1">// Motor 2</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttPin3</span><span class="p">)</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>         <span class="c1">// Motor 3</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttPin4</span><span class="p">)</span> <span class="o">==</span> <span class="n">LOW</span><span class="p">)</span> <span class="p">{</span>         <span class="c1">// Motor 4</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">((</span><span class="n">millis</span><span class="p">()</span> <span class="o">-</span> <span class="n">saveTime</span> <span class="o">&gt;=</span> <span class="mi">2000</span> <span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">millis</span><span class="p">()</span> <span class="o">-</span> <span class="n">greenTime</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">rNum</span> <span class="o">=</span> <span class="n">random</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">saveTime</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">" "</span><span class="p">);</span>
+      <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">rNum</span><span class="p">);</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">rNum</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>                <span class="c1">// Every second, generate a new random number</span>
+        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>      <span class="c1">// If random number is even, switch light to red</span>
+        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>       <span class="c1">// Stay green otherwise</span>
+        <span class="n">isGreen</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="n">saveTime</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span>
+  <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">isGreen</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// If button is not being pressed while red, flip a bool. If bool is true, stop belts and reverse motors.</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttPin1</span><span class="p">)</span> <span class="o">==</span> <span class="n">HIGH</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// Motor 1</span>
+      <span class="n">isCaught1</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttPin2</span><span class="p">)</span> <span class="o">==</span> <span class="n">HIGH</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// Motor 2</span>
+      <span class="n">isCaught2</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttPin3</span><span class="p">)</span> <span class="o">==</span> <span class="n">HIGH</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// Motor 3</span>
+      <span class="n">isCaught3</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">buttPin4</span><span class="p">)</span> <span class="o">==</span> <span class="n">HIGH</span><span class="p">)</span> <span class="p">{</span>    <span class="c1">// Motor 4</span>
+      <span class="n">isCaught4</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">doShift</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">isCaught1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isCaught2</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isCaught3</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">isCaught4</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">doShift</span><span class="p">();</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>
+    <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg1</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">shiftReg2</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">doShift</span><span class="p">();</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>                          <span class="c1">// Keep light red for 2 seconds</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">greenPin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>         <span class="c1">// Reset light back to green</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">redPin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">isGreen</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">greenTime</span> <span class="o">=</span> <span class="n">millis</span><span class="p">();</span>
+
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+    </div>
+</div>
+
+</div>
+
+     
+</body>
+
+    <footer>
+    <div class="footer-content">
+        <div class="links">
+            <a href="/">
+                <span>Home</span>
+            </a>
+            <a href="/projects/">
+                <span>Projects</span>
+            </a>
+            <a href=/assets/resume/Resume.pdf target="_blank" rel="noopener noreferrer">
+                <span>Resume</span>
+            </a>
+        </div>
+    </div>
+    <div class="license">
+        <p>Free-To-Engineer portfolio template © 2025 by lowinertia.com is licensed under <a
+                href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1">CC BY 4.0</a></p>
+    </div>
+</footer>
+</html>
