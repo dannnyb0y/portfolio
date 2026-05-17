@@ -19,7 +19,7 @@ date: 2025-12-12
 
 **Project Type** - UC Berkeley (ME103)
 
-**Collaborators** - Omar Cochinwala, Hamzah Shir, Ezenbaatar Batjargal
+**Collaborators** - [Omar Cochinwala](https://www.linkedin.com/in/omar-cochinwala-0a0889271/), [Hamzah Shir](https://www.linkedin.com/in/hamzahshir/), [Ezenbaatar Batjargal](https://www.linkedin.com/in/ezenbaatar/)
 
 This project aimed to characterize airfoil performance for the sake of improving fuel efficiency for aircraft. Multiple surface geometries were explored, all of which involved dimples or cutouts in the airfoil surface. The project also helped foster a greater understanding of principles of aerodynamics and fluid dynamics. The project was structured as an experiment meant to validate a hypothesis.
 

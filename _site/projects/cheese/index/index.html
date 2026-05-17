@@ -100,13 +100,70 @@
     <div class="content">
         <p><strong>Project Type</strong> - UC Berkeley</p>
 
-<p><strong>Collaborators</strong> - <a href="https://www.linkedin.com/in/kevin-sengsourichanh-4a4743217/">Kevin Sengsourichanh</a>, Nick Khamseh, Ja’Den Hunter</p>
+<p><strong>Collaborators</strong> - <a href="https://www.linkedin.com/in/kevin-sengsourichanh-4a4743217/">Kevin Sengsourichanh</a>, <a href="https://www.linkedin.com/in/nickkhamseh/">Nick Khamseh</a>, <a href="https://www.linkedin.com/in/jaden-hunter-70a004249/">Ja’Den Hunter</a></p>
 
 <p>This project involved designing and building a prototype device that could be fed a block of cheese and have it be grated automatically. The project was presented at the ME126 project expo on May 1, 2026.</p>
 
 <h2 id="design">Design</h2>
 <p>This device was intended for two use cases - first, for a professional chef needing to shred their own cheese while doing other tasks, and second, for a home chef (such as an elderly person) who may find it difficult to shred cheese on their own.</p>
 
+<p>A large goal of the project was to keep design and implementation simple to ensure reliability and functionality. The body doubled as a capture point for shredded cheese and a housing for the motor/grater mechanism.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/projects/cheese//cad-full.png" alt="cad-full.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        CAD of the full assembly.
+    </figcaption>
+    
+</figure>
+
+<p>The motor was a 12V high-torque DC motor simply wired up to a power switch that turned on/off flow of power from an outlet. This motor had a circular grater piece screwed onto it that would spin when the motor was powered.</p>
+
+<p>A weighted plate was used to press down the cheese onto the grater and cause it to be shredded. Originally, this was going to be a spring-powered mechanism, but initial prototyping proved unsuccessful and the designed was changed to a weighted plate. This plate has an array of pointed features that help hold the cheese in place as it shreds.</p>
+
+<figure class="image-gallery-wrapper" style="text-align: center; margin: 2em 0;">
+    <div class="image-gallery" style="
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px;
+    --gallery-height: 400px;">
+
+        
+        
+        
+        
+        <img src="/projects/cheese//plate.png" alt="plate.png" loading="lazy" style="height: var(--gallery-height); width: auto; object-fit: contain;" onerror="this.onerror=null;this.src=this.src.replace('.webp','.png').replace('.png','.webp');" />
+        
+        
+    </div>
+
+    
+    <figcaption style="margin-top: 10px; font-style: italic; font-size: 0.9em; color: #666;">
+        CAD of the weighted plate.
+    </figcaption>
+    
+</figure>
+
+<p><em>This summary was adapted from the <a href="https://docs.google.com/document/d/1btiCHjzfGTRxgeQ2V_wgzOLz5x3AC6XDJCwFKdZN8DE/edit?usp=sharing">ME126 Final Report</a> written for this class</em>.</p>
 
     </div>
 </div>

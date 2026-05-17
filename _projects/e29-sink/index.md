@@ -14,7 +14,7 @@ date: 2023-12-12
 ---
 
 **Project Type** - UC Berkeley
-**Collaborators** - Trent Frandson, Minou Bouman, Nilesh Kothari, Aarav Bedi, Ottis Pendergraft
+**Collaborators** - [Trent Frandson](https://www.linkedin.com/in/trent-frandson/), [Minou Bouman](https://www.linkedin.com/in/minou-bouman-6374a52ab/), [Nilesh Kothari](https://www.linkedin.com/in/nileshkothari-/), [Aarav Bedi](https://www.linkedin.com/in/aaravbedi/), [Ottis Pendergraft](https://www.linkedin.com/in/ottis-pendergraft-3bb845267/)
 
 The Sink Project was a project designed to help gain experience in GD&T, manufacturing techniques, and engineering drawing. The device itself was an accessory that could be attached to a kitchen sink. When the integrated soap bottle was filled with soap, the water from the sink would mix with it to produce soapy water for cleaning dishes. The device was intended to aid those who didn’t have a dishwasher. 
 

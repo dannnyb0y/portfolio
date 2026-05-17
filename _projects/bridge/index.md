@@ -12,7 +12,7 @@ date: 2021-02-01
 
 **Project Type** - High School
 
-**Collaborators** - Manasvini Kala
+**Collaborators** - [Manasvini Kala](https://www.linkedin.com/in/manasvini-kala-434293291/)
 
 This project involved designing and building a model truss bridge out of balsa wood. The bridge was then tested to see how much weight it could hold before failing. 
 

@@ -16,7 +16,7 @@ pinned: true
 ---
 **Project Type** - Internship
 
-**Collaborators** - Charlin Wang (LLNL), Rebecca Griffith (LLNL), Tiffany Yslas (LLNL), Jordan Smilo (LLNL), Jordan Karburn (LLNL), & Joshua Robles (LLNL).
+**Collaborators** - [Charlin Wang](https://www.linkedin.com/in/charlin-wang-b0751827/), [Rebecca Griffith](https://www.linkedin.com/in/rebecca-griffith-16b3b0153/), Tiffany Yslas, [Jordan Smilo](https://www.linkedin.com/in/jordansmilo/), Jordan Karburn, [Joshua Robles](https://www.linkedin.com/in/joshua-robles-6b4325133/)
 
 **Released under LLNL-POST-867582**
 

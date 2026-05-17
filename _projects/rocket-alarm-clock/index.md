@@ -13,7 +13,8 @@ date: 2022-04-01
 ---
 
 **Project Type** - High School
-**Collaborators** - Benny Marenco
+
+**Collaborators** - [Benicio Marenco](https://www.linkedin.com/in/benicio-marenco-3380b7249/)
 
 The Rocket Alarm Clock is an internet-enabled electronic device designed to be put on a nightstand. It displays the time, the local weather, and a quote of the user’s choice on the LCD display, and has customizable RGB lighting.
 

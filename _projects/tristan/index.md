@@ -13,7 +13,7 @@ date: 2025-06-15
 
 **Project Type** - Space Technologies and Rocketry
 
-**Collaborators** - Roman Silivra, Kari Martinez-Espindola, Kevin Sengsourichanh, James Huntszinger, Alli Wang, Adnan Kapadia, Tristan Steen, Kush Mahanjan, Austin Mei
+**Collaborators** - [Roman Silivra](https://www.linkedin.com/in/roman-silivra/), [Kevin Sengsourichanh](https://www.linkedin.com/in/kevin-sengsourichanh-4a4743217/), [Kari Martinez-Espindola](https://www.linkedin.com/in/karista-espindola/), [James Huntzinger](https://www.linkedin.com/in/jameshuntzinger/), [Alli Wang](https://www.linkedin.com/in/alli-wang/), [Adnan Kapadia](https://www.linkedin.com/in/adnan-kapadia/), Tristan Steen, [Kush Mahanjan](https://www.linkedin.com/in/kush-mahajan-8030461b8/), [Austin Mei](https://www.linkedin.com/in/austinrmei/)
 
 TRISTAN (Thruster-Based Reconnaissance Instrument for Scientific Tracking and Atmospheric Navigation) was a proof-of-concept for an ejectable payload. The goal was to develop a system that would detach itself from a rocket airframe, descend independently, and achieve a controlled landing on the ground. Ultimately, the system was not ejected from the airframe, but rather showed that the relevant electronics and hardware functioned properly, and could be used after further development for a full ejection in the future.
 

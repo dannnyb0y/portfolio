@@ -14,7 +14,7 @@ date: 2024-06-01
 
 **Project Type** - Space Technologies and Rocketry
 
-**Collaborators** - Adnan Kapadia, Andrew Wu, Tristan Steen, Aarabhi Achanta, Aidan Rickert
+**Collaborators** - [Adnan Kapadia](https://www.linkedin.com/in/adnan-kapadia/), [Andrew Wu](https://www.linkedin.com/in/andrew-wu-00867a294/), Tristan Steen, [Aarabhi Achanta](https://www.linkedin.com/in/aarabhi-achanta-3b24a4203/), [Aidan Rickert](https://www.linkedin.com/in/aidan-rickert-b45725191/)
 
 The Kinetically Engineered Life Support Experiment - Yeast (KELSE-Y) is a life support system prototype designed to support life on a rocket. The biological subject used in KELSE-Y is yeast, and the system contains a pulmonary component and a cardiovascular component that mirror modern life support systems.
 

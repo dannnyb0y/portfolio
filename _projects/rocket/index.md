@@ -13,7 +13,7 @@ date: 2021-02-03
 
 **Project Type** - High School
 
-**Collaborators** - Manasvini Kala
+**Collaborators** - [Manasvini Kala](https://www.linkedin.com/in/manasvini-kala-434293291/)
 
 This project tasked students with creating and launching a custom model rocket. The rocket carried an altimeter to determine its apogee, a parachute for recovery, and a quail egg as a payload. 
 

@@ -16,7 +16,7 @@ date: 2021-12-12
 
 **Project Type** - High School
 
-**Collaborators** - Benny Marenco
+**Collaborators** - [Benicio Marenco](https://www.linkedin.com/in/benicio-marenco-3380b7249/)
 
 The Red Light Green Light project was a translation of the classic game Red Light Green Light into an electronic board game. 4 motors drove 4 rubber conveyor belts that carried 3D printed figurines down the board. A light post with a green and red LED would flash at random intervals, signaling players to press buttons under their lanes to advance their characters. Pressing a button during a red light would move the player backwards automatically as a penalty. First one to the end won!
 

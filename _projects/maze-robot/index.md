@@ -12,7 +12,7 @@ date: 2021-05-10
 
 **Project Type** - High School
 
-**Collaborators** - Hamzah Shir
+**Collaborators** - [Hamzah Shir](https://www.linkedin.com/in/hamzahshir/)
 
 This project’s challenge was to customize and code an existing robotic frame to navigate a maze as efficiently as possible. The project was scored by the amount of “tiles” that the robot covered within a given time frame - the more tiles covered, the better. 
 
