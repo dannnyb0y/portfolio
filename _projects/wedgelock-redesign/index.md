@@ -12,6 +12,7 @@ skills:
 - GD&T Drawings
 main-image: /pcb-lock.JPG
 date: 2024-08-09
+pinned: true
 ---
 **Project Type** - Internship
 

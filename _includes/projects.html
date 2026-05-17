@@ -2,9 +2,13 @@
     <h2>Projects</h2>
 
     <div class="grid-container">
-        {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+        {% assign pinned = site.projects | where: "pinned", true | sort: "date" | reverse %}
 
-        {% for item in sorted_projects %}
+        {% assign unpinned = site.projects | where_exp: "item", "item.pinned != true" | sort: "date" | reverse %}
+
+        {% assign final_projects = pinned | concat: unpinned %}
+
+        {% for item in final_projects %}
         <a href="{{ item.url }}" class="project-link">
             <div class="project-card">
                 {% assign folder_path = item.path | split: "/" | slice: 0, 2 | join: "/" %}
