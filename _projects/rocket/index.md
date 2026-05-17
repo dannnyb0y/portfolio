@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Model Rocket Project
-description: Designed, built, and tested the strength of a model bridge made from balsa wood.
+description: Designed, built, and tested a small model rocket with the goal of carrying an egg to apogee and through landing without damage.
 skills: 
 - OpenRocket
 - CAD
