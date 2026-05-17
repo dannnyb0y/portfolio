@@ -61,7 +61,7 @@ The testing steps for each airfoil were as follows:
 This data ultimately disproved our hypothesis, but it was interesting to learn about the physics at play and about operating and using a wind tunnel. After experimentation, we gave a technical presentation about our findings.
 
 ## Airfoil Designs
-Below are CAD images of each airfoil type we tested.
+Below are images of each airfoil type we tested.
 
 {% include image-gallery.html images="baseairfoil.png" height="400" %}
 
