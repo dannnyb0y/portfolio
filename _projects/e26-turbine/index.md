@@ -11,6 +11,7 @@ skills:
 - Project Management
 - Design Testing & Analysis
 main-image: /cropped.jpeg
+date: 2022-12-12
 ---
 
 **Project Type** - UC Berkeley

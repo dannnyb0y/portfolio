@@ -7,6 +7,7 @@ skills:
 - C++
 - Electronics
 main-image: /main.jpeg
+date: 2021-05-10
 ---
 
 **Project Type** - High School

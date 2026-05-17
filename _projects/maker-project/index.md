@@ -7,6 +7,7 @@ skills:
 - Onshape
 - Laser Cutting
 main-image: /main.png
+date: 2021-12-12
 ---
 
 **Project Type** - High School

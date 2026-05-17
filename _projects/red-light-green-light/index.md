@@ -11,6 +11,7 @@ skills:
 - Arduino
 - Circuit Design
 main-image: /main.png
+date: 2021-12-12
 ---
 
 **Project Type** - High School

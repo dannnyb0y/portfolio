@@ -8,6 +8,7 @@ skills:
 - 3D Printing
 - Engineering Drawings
 main-image: /main.png
+date: 2021-02-03
 ---
 
 **Project Type** - High School

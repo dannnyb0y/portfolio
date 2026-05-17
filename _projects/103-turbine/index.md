@@ -9,6 +9,7 @@ skills:
 - Technical Presentation
 - 3D Printing
 main-image: /overview.png
+date: 2025-12-12
 ---
 
 <script

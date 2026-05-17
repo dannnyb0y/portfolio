@@ -15,6 +15,7 @@ skills:
 - Technical Presentation
 - Project Management
 main-image: /folder.jpeg
+date: 2025-12-16
 ---
 
 <script

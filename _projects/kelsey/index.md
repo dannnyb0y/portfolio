@@ -9,6 +9,7 @@ skills:
 - FMEA
 - Documentation
 main-image: /kelsey.png
+date: 2024-06-01
 ---
 
 **Project Type** - Space Technologies and Rocketry

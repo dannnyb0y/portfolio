@@ -10,6 +10,7 @@ skills:
 - 3D Printing
 - Project Management
 main-image: /grater.jpeg
+date: 2026-05-07
 ---
 
 **Project Type** - UC Berkeley

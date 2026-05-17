@@ -7,6 +7,7 @@ skills:
 - Onshape
 - 3D printing
 main-image: /main.png
+date: 2021-10-10
 ---
 
 **Project Type** - High School

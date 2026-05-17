@@ -9,6 +9,7 @@ skills:
 - Technical Presentation
 - 3D Printing
 main-image: /main.jpg
+date: 2022-04-01
 ---
 
 **Project Type** - High School

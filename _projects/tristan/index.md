@@ -8,6 +8,7 @@ skills:
 - Leadership
 - Project Management
 main-image: /isometric-cad.png
+date: 2025-06-15
 ---
 
 **Project Type** - Space Technologies and Rocketry

@@ -7,6 +7,7 @@ skills:
 - Engineering Drawings
 - Team Project
 main-image: /main.png
+date: 2021-02-01
 ---
 
 **Project Type** - High School

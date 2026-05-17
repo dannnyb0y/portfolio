@@ -11,6 +11,7 @@ skills:
 - 3D Printing
 - GD&T Drawings
 main-image: /pcb-lock.JPG
+date: 2024-08-09
 ---
 **Project Type** - Internship
 

@@ -10,6 +10,7 @@ skills:
 - 3D Printing
 - Project Management
 main-image: /main.jpeg
+date: 2023-12-12
 ---
 
 **Project Type** - UC Berkeley
