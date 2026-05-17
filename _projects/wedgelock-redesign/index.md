@@ -55,4 +55,4 @@ This design performed well in FEA and prototype environments. Further testing wi
 
 **Released under LLNL-POST-867582**
 
-*This summary was adapted from my [LLNL Summer Student Symposium Poster](../../assets/symposium-poster.pdf).*
+*This summary was adapted from my [LLNL Summer Student Symposium Poster](../../assets/symposium-poster.pdf) (PDF download).*

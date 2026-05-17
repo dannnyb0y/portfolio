@@ -31,7 +31,7 @@ The final rotor design had 3 blades, a 15° angle of attack, 12° angle of twist
 The rotor was 3D printed out of clear resin on a Formlabs SLA printer for precise geometry and a smooth finish to reduce friction.
 
 ### **Structure Design**
-The tower was designed to minimize material use without sacrificing structural integrity. The tower was 3D printed out of PLA. There were three parts: the base, the middle pillar, and the motor cradle. Pins allowed them to slot together and they were glued in place for additional rigidity. The following engineering drawings show the design:
+The tower was designed to minimize material use without sacrificing structural integrity. The tower was 3D printed out of PLA. There were three parts: the base, the middle pillar, and the motor cradle. Pins allowed them to slot together and they were glued in place for additional rigidity. The following engineering drawings show the design (PDF downloads):
 - [Base](../../assets/e26/base.pdf)
 - [Middle Pillar](../../assets/e26/middle.pdf)
 - [Motor Cradle](../../assets/e26/cradle.pdf)

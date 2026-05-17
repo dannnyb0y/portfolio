@@ -81,4 +81,4 @@ Below are images of each airfoil type we tested.
 
 ---
 
-*This summary was adapted from the [Final Report](../../assets/ME103_Final_Report.pdf) written for the ME103 course.*
+*This summary was adapted from the [Final Report](../../assets/ME103_Final_Report.pdf) (PDF download) written for the ME103 course.*
