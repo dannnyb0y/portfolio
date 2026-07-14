@@ -13,7 +13,7 @@ date: 2026-05-01
 
 **Project Type** - Personal
 
-My 'homelab' (computer lab at home) is comprised of a Raspberry Pi running openmediavault for networked storage, and a laptop running Ubuntu server that hosts online services like photo backup, media streaming, and website hosting. 
+My 'homelab' (computer lab at home) is comprised of a Raspberry Pi running openmediavault for networked storage, and a laptop running Ubuntu server that hosts online services like photo backup, drive storage, and website hosting. 
 
 Services run locally and are exposed to the internet through a Cloudflare tunnel. The services all run on Linux platforms, and certain websites are built through GitHub pages. This portfolio is one of those websites! 
 
