@@ -17,4 +17,4 @@ My 'homelab' (computer lab at home) is comprised of a Raspberry Pi running openm
 
 Services run locally and are exposed to the internet through a Cloudflare tunnel. The services all run on Linux platforms, and certain websites are built through GitHub pages. This portfolio is one of those websites! 
 
-{% include image-gallery.html images="home.png" height="400" caption="The homelab homepage, which runs on an Apache server on my laptop." %}
+{% include image-gallery.html images="homepage.png" height="400" caption="The homelab homepage, which runs on an Apache server on my laptop." %}
